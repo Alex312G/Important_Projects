@@ -1,7 +1,7 @@
 import sys
 import os
 from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QVBoxLayout, QLabel, QWidget
-from PyQt5.QtGui import QMovie
+from PyQt5.QtGui import QMovie, QPixmap
 import json
 import random
 from datetime import datetime
@@ -67,13 +67,41 @@ class mainwindow(QMainWindow):
     def initUI_start(self):
         self.text_start.setMinimumWidth(300)
         self.text_start.setWordWrap(True)
+        self.centralwidget.setObjectName("central")
+        self.centralwidget_words.setObjectName("central2")
+        self.centralwidget.setStyleSheet("""QWidget#central {
+                                                background: qlineargradient(
+                                                x1:0, y1:0, x2:1, y2:1,
+                                                stop:0 #f7f5f2, stop:1 #ece7e1
+                                                );
+                                            }
+                                            QWidget#central {
+                                                background: qlineargradient(
+                                                x1:0, y1:0, x2:1, y2:1,
+                                                stop:0 #f7f5f2, stop:1 #ece7e1
+                                                );
+                                            }
+                                        """)
         self.setStyleSheet("""       QLabel{
                                         font-size: 20px;
                                         font-weight: bold;
                                         font-family: Consolas;
                                     }
-                                    QPushButton{
-                                    
+                                    QPushButton {
+                                        background-color: #1e1e1e;
+                                        color: #f0f0f0;
+                                        font-size: 15px;
+                                        font-family: Consolas;
+                                        border: 2px solid #3d3d3d;
+                                        border-radius: 8px;
+                                        padding: 10px 24px;
+                                    }
+                                    QPushButton:hover {
+                                        background-color: #2a2a2a;
+                                        border: 2px solid #555;
+                                    }
+                                    QPushButton:pressed {
+                                        background-color: #111;
                                     }
                                     """)
         self.start_button.setText("Start")
@@ -87,7 +115,12 @@ class mainwindow(QMainWindow):
         vbox.addWidget(self.text_start)
         vbox.addWidget(self.flag)
         vbox.addWidget(self.start_button)
-    
+        self.sagrada_background = QLabel(self.centralwidget)
+        sagrada_pixmap = QPixmap("sagrada_familia.png")
+        self.sagrada_background.setPixmap(sagrada_pixmap)
+        self.sagrada_background.setScaledContents(True)
+        self.sagrada_background.setGeometry(0, 0, self.width(), self.height())
+        self.sagrada_background.lower()
         #self.text_start.setAlignment(Qt.AlignCenter)
         #self.flag.setAlignment(Qt.AlignCenter)
 
@@ -105,7 +138,23 @@ class mainwindow(QMainWindow):
         self.text_learn.setWordWrap(True)
         self.text_learn.setMinimumWidth(300)
         
-        self.next_button.setFixedSize(300, 100)
+        #self.next_button.setFixedSize(300, 100)
+        self.next_button.setStyleSheet("""
+            QPushButton {
+                border: none;
+                background: transparent;
+                background-image: url(bull.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                color: black;
+            }
+            QPushButton:hover {
+                background-image: url(bull_hover.png);
+                color: white;
+            }
+        """)
+        self.next_button.setFixedSize(150, 150) 
+        self.next_button.setText("")
         self.next_button.setText("Next")
         vbox = QVBoxLayout()
         vbox.addStretch(1)
