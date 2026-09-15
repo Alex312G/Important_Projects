@@ -47,14 +47,15 @@ class mainwindow(QMainWindow):
             if update_type:
                 with open(file_path_streak, "w") as file:
                     if update_type == 1:
-                        updated_key = int(last_key)
+                        updated_key = int(last_key) + 1
                         streak.update({updated_key : str(datetime.today().date())})
                         json.dump(streak,file)
                         self.text_start.setText(f"Yay!! You completed a new day: {updated_key} days streak")
-                        self.days_streak = updated_key+1
+                        self.text_start.setText(f"You are on: {last_key} day/s streak")
+                        self.days_streak = updated_key
                     else:
                         streak.update({1 : str(datetime.today().date())})
-                        json.dump(streak,file)
+                        json.dump({1 : str(datetime.today().date())},file)
                         self.text_start.setText("Sadly you start again, day streak: 1")
                         #Bug on day 1
                         self.days_streak = 1
@@ -123,7 +124,7 @@ class mainwindow(QMainWindow):
         self.next_button.clicked.connect(self.next_words)
     def next_words(self):
         if self.indx == 4:
-            self.text_learn.setText(f"FELICIDAD!!!\nYou finished another day: {self.days_streak}.")
+            self.text_learn.setText(f"FELICIDAD!!!\nYou finished another lesson: {self.days_streak}.")
             self.text_learn.setStyleSheet("font-size: 70px;")
             self.next_button.hide()
             self.indx = -1000
