@@ -6,6 +6,9 @@ Here i store the most important projects i have done:
 ## 2. Project21 is a Tic-Tac-Toe game
 where you get to play against the minimax algorithm, without using depth, which sometimes makes for hilarious ways that it beats you. **Best-Case Scenario** for Player1(Human) is to draw.
 **It uses PyQt5 to show a window where you can play the game***
-## 3. I am developing an app where you get 5 random Spanish words each day, today i did all the scripts needed for it to work, tomorrow i will make the PyQt5 part
+## 3. Project22 is a spanish learning app:
+I made an app where you get 5 random words in Spanish and then their explained English version, and you have a days streak to keep working
+**Used PyQt5 for interface**
+## 4.Thinking what it might be: typeracer type app or something else or a bigger project maybe over 1000 lines
 
 
